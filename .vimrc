@@ -1,28 +1,109 @@
-" .vimrc
+let mapleader=" "
 
-set encoding=utf-8
-set tabstop=3
-set shiftwidth=3
-set expandtab
-set hlsearch
-syntax on
+set incsearch
+set tabstop = 3
+set softtabstop = 3
+set shiftwidth = 3
+set expandtab = true
 
-set redrawtime=5000
+set smartindent = true
 
-hi StatusLine ctermfg=0
+set wrap = false
 
-" Change vertical splited line to a black 'solid' line
-hi VertSplit ctermfg=0 ctermbg=0
+set number = true
+set ruler = true
 
-" Change the current window status line background color to green
-hi StatusLine ctermfg=2
+set swapfile = false
+set backup = false
+set undodir = os.getenv("HOME") .. "/.local/cache/nvim/undodir"
+set undofile = true
 
-" Change the non-current window status line
-"    background color to black
-"    fontground color to green
-hi StatusLineNC ctermfg=0 ctermbg=2
+set hlsearch = true
+set incsearch = true
 
+set termguicolors = true
 
-hi LineNr ctermfg=7 ctermbg=0
+set scrolloff = 8
+set signcolumn = "yes"
+set isfname:append("@-@
 
-colorscheme slate
+set updatetime = 50
+
+set colorcolumn = "80"
+set cursorline = true
+
+vnoremap J :m '>+1<CR>gv=gv'
+vnoremap K :m '<-2<CR>gv=gv'
+
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+xnoremap <leader>p \"_dP
+
+nnoremap <leader>yy \"+y
+vnoremap <leader>yy \"+y
+nnoremap <leader>Y \"+Y
+
+nnoremap <leader>d \"+d
+vnoremap <leader>d \"+d
+
+nnoremap Q <nop>
+
+" quikfix shortcuts
+nnoremap <C-k> <cmd>cnext<CR>zz
+nnoremap <C-j> <cmd>cnext<CR>zz
+nnoremap <leader>k <cmd>lnext<CR>zz
+nnoremap <leader>j <cmd>lnext<CR>zz
+
+nnoremap <leader>rW :%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>
+nnoremap <leader>rw :%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>
+nnoremap <leader>rs :%s/<C-r><C-w>//g<Left><Left>
+vnoremap <leader>rs :s/@//g<Left><Left>
+nnoremap <leader>re :%s/$//<Left>
+vnoremap <leader>re :s/$//<Left>
+
+nnoremap <leader>on", vim.cmd.Ex)
+nnoremap <leader>sa gg+V+G
+
+"
+" Custom
+"
+"
+nnoremap <leader>sW :let @/='\\<<C-R>=expand(\"<cword>\")<CR>\\>'<CR>:set hls<CR>
+nnoremap <leader>sw :let @/='<C-R>=expand(\"<cword>\")<CR>'<CR>:set hls<CR>
+nnoremap <leader>ss :let @/=''<Left>
+
+" Keep selection after indentation
+vnoremap < <gv
+vnoremap > >gv
+
+nnoremap <M-Left> <C-w>h
+nnoremap <M-Down> <C-w>j
+nnoremap <M-Up> <C-w>k
+nnoremap <M-Right> <C-w>l
+
+" Keep position when pasting
+nnoremap p p`[
+
+" Switch between tabs
+nnoremap <M-Tab> :tabnext<CR>
+nnoremap <S-Tab> :tabprev<CR>
+
+vim.keymap.set("t <ESC> <C-\\><C-n>
+vim.keymap.set("t <M-Tab> <C-\\><C-n>:tabnext<CR>
+
+" Enter insert mode then swithcing to Termnal
+vim.cmd( [[ autocmd BufWinEnter,WinEnter term://* startinsert ]] )
+
+" Disable number for terminal
+vim.cmd( [[ autocmd TermOpen * setlocal nonumber norelativenumber ]] )
+
+nnoremap <S-Up> <Up><Up><Up><Up>
+inoremap <S-Up> <Up><Up><Up><Up>
+vnoremap <S-Up> <Up><Up><Up><Up>
+nnoremap <S-Down> <Down><Down><Down><Down>
+inoremap <S-Down> <Down><Down><Down><Down>
+vnoremap <S-Down> <Down><Down><Down><Down>
