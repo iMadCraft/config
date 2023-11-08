@@ -1,0 +1,9 @@
+[alias]
+	s = status
+	co = checkout
+	cp = cherry-pick
+	l = log --oneline --decorate -n 10
+	amend = commit --amend
+[user]
+	name = KS0001
+	email = kristoffer.sjoholm@kskb.se

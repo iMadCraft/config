@@ -1,0 +1,14 @@
+alias ls='ls --color'
+alias grep='grep --color=auto'
+alias emacs='emacs -nw'
+alias edit='emacs'
+alias browser='lynx -emacskeys -cookies off --display_charset=utf-8'
+alias randid="dd if=/dev/urandom bs=1 count=8 status=none | xxd -ps | tr '[:lower:]' '[:upper:]' | sed 's/^/0x/'"
+alias vi=vim
+alias vim=nvim
+
+search() {
+   B_QUERY="`echo "${@}" | tr ' ' '+'`";
+   curl --silent --data "q=${B_QUERY}" https://lite.duckduckgo.com/lite/ | browser -stdin
+   return ${?}
+}
