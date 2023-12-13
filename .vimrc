@@ -1,36 +1,36 @@
 let mapleader=" "
 
 set incsearch
-set tabstop = 3
-set softtabstop = 3
-set shiftwidth = 3
-set expandtab = true
+set tabstop=3
+set softtabstop=3
+set shiftwidth=3
+set expandtab
 
-set smartindent = true
+set smartindent
 
-set wrap = false
+set nowrap
 
-set number = true
-set ruler = true
+set number
+set ruler
 
-set swapfile = false
-set backup = false
-set undodir = os.getenv("HOME") .. "/.local/cache/nvim/undodir"
-set undofile = true
+set noswapfile
+set nobackup
+set undodir=os.getenv("HOME") .. "/.local/cache/nvim/undodir"
+set undofile
 
-set hlsearch = true
-set incsearch = true
+set hlsearch
+set incsearch
 
-set termguicolors = true
+set termguicolors
 
-set scrolloff = 8
-set signcolumn = "yes"
-set isfname:append("@-@
+set scrolloff=8
+set signcolumn="yes"
+-- set isfname:append("@-@
 
-set updatetime = 50
+set updatetime=50
 
-set colorcolumn = "80"
-set cursorline = true
+set colorcolumn="80"
+set cursorline
 
 vnoremap J :m '>+1<CR>gv=gv'
 vnoremap K :m '<-2<CR>gv=gv'
