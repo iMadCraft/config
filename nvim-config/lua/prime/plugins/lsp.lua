@@ -7,16 +7,18 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 -- Setup language servers.
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local lspconfig = require('lspconfig')
-lspconfig.pyright.setup {}
+-- LLVM
+lspconfig.clangd.setup {}
+-- Eclipse
+lspconfig.jdtls.setup {}
+-- VSCode 
 lspconfig.tsserver.setup {}
-lspconfig.rust_analyzer.setup {
-  -- Server-specific settings. See `:help lspconfig-setup`
-  settings = {
-    ['rust-analyzer'] = {},
-  },
-}
-
+lspconfig.html.setup {}
+lspconfig.cssls.setup {}
+lspconfig.jsonls.setup {}
+lspconfig.eslint.setup {}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -56,30 +58,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
-   ensure_installed = {
-      'clangd',
-      'eslint',
-      'rust_analyzer',
-   },
+local mason = require('mason');
+mason.setup({});
+local mason_lspconfig = require('mason-lspconfig');
+mason_lspconfig.setup({
    handlers = {
       lsp.default_setup,
    },
 })
-
-
--- local lspconfig = require('lspconfig');
--- lspconfig.lua_language_server.setup ({
---   settings = {
-   --     Lua = {
-      --       diagnostics = {
-         --         -- Get the language server to recognize the `vim` global
-         --         globals = {'vim'},
-         --       },
-         --     },
-         --   },
-         -- })
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
