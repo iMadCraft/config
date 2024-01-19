@@ -27,6 +27,7 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
@@ -79,6 +80,7 @@ vim.keymap.set("n", "<leader>sa", "gg+V+G")
 vim.keymap.set("n", "<leader>sW", ":let @/='\\<<C-R>=expand(\"<cword>\")<CR>\\>'<CR>:set hls<CR>")
 vim.keymap.set("n", "<leader>sw", ":let @/='<C-R>=expand(\"<cword>\")<CR>'<CR>:set hls<CR>")
 vim.keymap.set("n", "<leader>ss", ":let @/=''<Left>")
+vim.keymap.set("v", "<leader>sv", "\"+y<CR>/<C-r>\"<CR>")
 
 -- Keep selection after indentation
 vim.keymap.set("v", "<", "<gv")
@@ -107,8 +109,10 @@ vim.cmd( [[ autocmd TermOpen * setlocal nonumber norelativenumber ]] )
 
 vim.keymap.set("n", "<S-Up>", "<Up><Up><Up><Up>")
 vim.keymap.set("i", "<S-Up>", "<Up><Up><Up><Up>")
+vim.keymap.set("v", "<S-Up>", "<Up><Up><Up><Up>")
 vim.keymap.set("n", "<S-Down>", "<Down><Down><Down><Down>")
 vim.keymap.set("i", "<S-Down>", "<Down><Down><Down><Down>")
+vim.keymap.set("v", "<S-Down>", "<Down><Down><Down><Down>")
 
 vim.keymap.set("n", "<leader>v1", function ()
    local win_number = api.nvim_get_current_win()
@@ -123,3 +127,9 @@ vim.keymap.set("n", "<leader>v1", function ()
    -- end
    -- print(result)
 end)
+
+vim.keymap.set("n", "[[", "[[zz")
+vim.keymap.set("n", "]]", "]]zz")
+
+vim.keymap.set("n", "(", "(zz")
+vim.keymap.set("n", ")", ")zz")

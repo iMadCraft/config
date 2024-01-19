@@ -12,7 +12,9 @@ local lspconfig = require('lspconfig')
 -- LLVM
 lspconfig.clangd.setup {}
 -- Eclipse
-lspconfig.jdtls.setup {}
+lspconfig.jdtls.setup {
+   -- root_dir = vim.fs.dirname(vim.fs.find({'.git'}, { upward = true })[1])
+}
 -- VSCode 
 lspconfig.tsserver.setup {}
 lspconfig.html.setup {}
