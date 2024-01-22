@@ -24,7 +24,7 @@ vim.opt.undofile = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
-vim.opt.termguicolors = true
+--vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
@@ -76,7 +76,7 @@ vim.keymap.set("n", "<leader>sa", "gg+V+G")
 --
 -- Custom
 --
---
+
 vim.keymap.set("n", "<leader>sW", ":let @/='\\<<C-R>=expand(\"<cword>\")<CR>\\>'<CR>:set hls<CR>")
 vim.keymap.set("n", "<leader>sw", ":let @/='<C-R>=expand(\"<cword>\")<CR>'<CR>:set hls<CR>")
 vim.keymap.set("n", "<leader>ss", ":let @/=''<Left>")
