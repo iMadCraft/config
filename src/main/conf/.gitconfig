@@ -1,0 +1,6 @@
+[alias]
+   s = status
+   co = checkout
+   cp = cherry-pick
+   l = log --oneline --decorate -n 10
+   amend = commit --amend
